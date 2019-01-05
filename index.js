@@ -1,4 +1,4 @@
-"use strict";
+﻿"use strict";
 
 var express = require("express");
 var path = require("path");
@@ -10,7 +10,7 @@ var app = express(),
 mongoose.Promise = global.Promise;
 
 mongoose.connect(
-    "MONGODB=mongodb://localhost/Users1",
+    "MONGODB=mongodb://localhost/Users",
     { useNewUrlParser: true }
     , function (err, db) {
         //console.log(db);
