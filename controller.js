@@ -10,16 +10,40 @@ exports.default_page = function (req, res) {
 };
 
 exports.create_a_user = function (req, res) {
+    console.log("create a user");
     console.log(`creating a user ${req.body.surname} ${req.body.name}`);
     var new_user = new User({
         surname: req.body.surname,
         name: req.body.name,
-        avatar: "uploads/" + req.file.filename
+        //avatar: "uploads/" + req.file.filename,
+        mail: req.body.mail,
+        //deck: new Array();
     });
     new_user.save(function (err, user) {
         if (err) res.send(err);
         res.json(user);
     });
+};
+
+exports.modify_user = function (req, res) {
+    console.log("modify a user");
+    //console.log(req);
+    console.log(JSON.stringify(req.body));
+    var json = JSON.stringify(req.body);
+    console.log(JSON.parse(json));
+    console.log(`surname : ${req.body.surname} name : ${req.body.name}`);
+    var new_user = new User({
+        surname: req.body.surname,
+        name: req.body.name,
+        avatar: '',
+        mail: req.body.mail,
+        deck: req.body.deck,
+        solde: req.body.solde
+    });
+    User.update({ surname: req.body.surname }, function (err, user) {
+        if (err) res.send(err);
+        res.json(new_user);
+    })
 };
 
 exports.get_all_users = function (req, res) {
@@ -31,6 +55,7 @@ exports.get_all_users = function (req, res) {
 };
 
 exports.find_a_user_by_id = function (req, res) {
+    console.log("finding a user by id");
     User.findById(req.params.id, function (err, user) {
         if (err) res.send(err);
         res.json(user);
@@ -38,8 +63,8 @@ exports.find_a_user_by_id = function (req, res) {
 };
 
 exports.find_a_user_by_name = function (req, res) {
-    console.log("LA" + req.params.userName);
-    User.find({ name: req.params.userName }, function (err, user) {
+    console.log("finding a user by name");
+    User.findOne({ surname: req.params.name }, function (err, user) {
         if (err) res.send(err);
         res.json(user);
     });

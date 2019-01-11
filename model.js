@@ -15,8 +15,14 @@ var UserSchema = new Schema({
         type: String
     },
     mail: {
-        type: String,
-        default: Date.now
+        type: String
+    },
+    deck: {
+        type: [{ Number }]
+    },
+    solde: {
+        type: Number,
+        default: 100
     }
 });
 module.exports = mongoose.model("Users", UserSchema);
