@@ -9,14 +9,17 @@ var app = express(),
 
 mongoose.Promise = global.Promise;
 
-mongoose.connect(
+/*mongoose.connect(
     "MONGODB=mongodb://localhost/Users",
     { useNewUrlParser: true }
     , function (err, db) {
         //console.log(db);
         if (err) console.log(err);
         console.log("Connecté à la base Users");
-    });
+    });*/
+
+mongoose.connect("mongodb://corentin44410:test123@ds157064.mlab.com:57064/lpweb-corentin", { useNewUrlParser: true, useMongoClient: true });
+
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
