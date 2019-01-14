@@ -18,7 +18,7 @@ var UserSchema = new Schema({
         type: String
     },
     deck: {
-        type: [{ Number }]
+        type: [Number]
     },
     solde: {
         type: Number,

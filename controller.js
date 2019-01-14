@@ -25,26 +25,23 @@ exports.create_a_user = function (req, res) {
     });
 };
 
-exports.modify_user = function (req, res) {
+exports.modify_user_deck = function (req, res) {
     console.log("modify a user");
-    //console.log(req);
     console.log(JSON.stringify(req.body));
     var json = JSON.stringify(req.body);
-    console.log(JSON.parse(json));
-    console.log(`surname : ${req.body.surname} name : ${req.body.name}`);
-    var new_user = new User({
-        surname: req.body.surname,
-        name: req.body.name,
-        avatar: '',
-        mail: req.body.mail,
-        deck: req.body.deck,
-        solde: req.body.solde
+    //console.log(req.body.deck);
+    var myquery = { "surname": req.body.surname };
+    var json = { "surname": req.body.surname, "name": req.body.name, "mail": req.body.mail, "avatar": "", "deck": req.body.deck, "solde": req.body.solde };
+    //console.log(myquery);
+    //console.log(json);
+    User.update(myquery, json, function (err, res) {
+        if (err) {
+            console.log('err : ' + err);
+        } else {
+            console.log(res);
+        }
     });
-    User.update({ surname: req.body.surname }, function (err, user) {
-        if (err) res.send(err);
-        res.json(new_user);
-    })
-};
+}
 
 exports.get_all_users = function (req, res) {
     console.log("finding all users");

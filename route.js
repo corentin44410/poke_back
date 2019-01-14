@@ -15,7 +15,7 @@ module.exports = function (app) {
         .route("/api/utilisateurs")
         .get(controller.get_all_users)
         .post(controller.create_a_user)
-        .put(controller.modify_user);
+        .put(controller.modify_user_deck);
 
     app.route("/api/utilisateurs/:name")
         .get(controller.find_a_user_by_name);
