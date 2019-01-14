@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "servdev": "MONGODB=mongodb://localhost:27017/Users nodemon index.js",
-    "start": "mongodb://cocoSnipe:coco0208@ds149754.mlab.com:49754/lpweb-corentin"
+    "start": "MONGODB=mongodb://corentin44410:test123@ds157064.mlab.com:57064/lpweb-corentin"
   },
   "author": "",
   "license": "ISC",
